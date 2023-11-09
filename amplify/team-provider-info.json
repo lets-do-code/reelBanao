@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-reelbanao-dev-160924-authRole",
+      "UnauthRoleArn": "arn:aws:iam::347872009141:role/amplify-reelbanao-dev-160924-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::347872009141:role/amplify-reelbanao-dev-160924-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-reelbanao-dev-160924-deployment",
+      "UnauthRoleName": "amplify-reelbanao-dev-160924-unauthRole",
+      "StackName": "amplify-reelbanao-dev-160924",
+      "StackId": "arn:aws:cloudformation:ap-south-1:347872009141:stack/amplify-reelbanao-dev-160924/42186260-7eec-11ee-b1f5-0a20b3ffa9ea",
+      "AmplifyAppId": "dn29h7aqovyfq"
+    },
+    "categories": {
+      "api": {
+        "reelbanao": {}
+      }
+    }
+  }
+}
