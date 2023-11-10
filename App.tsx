@@ -7,11 +7,8 @@
 
 import "react-native-gesture-handler"
 import React from 'react';
-import {
-  SafeAreaView, StatusBar,
-} from 'react-native';
-
-
+import { SafeAreaView, StatusBar } from 'react-native';
+import { withAuthenticator } from "aws-amplify-react-native"
 import RootNavigation from "./src/navigation";
 
 
@@ -29,4 +26,4 @@ function App(): JSX.Element {
 }
 
 
-export default App;
+export default withAuthenticator(App);
