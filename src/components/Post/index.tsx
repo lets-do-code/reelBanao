@@ -74,7 +74,7 @@ const Index = (props: any) => {
                             <TouchableOpacity onPress={handleProfilePress}>
                                 <Image
                                     style={styles.profilePicture}
-                                    source={{ uri: post.user.profilePicture }}
+                                    source={{ uri: post.user.imageUri }}
 
                                 />
                                 {screen ? <View style={styles.plusIcon}>
@@ -107,13 +107,13 @@ const Index = (props: any) => {
 
                                 <View style={styles.songRow}>
                                     <Entypo name={'beamed-note'} size={15} color="white" />
-                                    <Text style={styles.songName}>{post.songName}</Text>
+                                    <Text style={styles.songName}>{post.song.name}</Text>
                                 </View>
                             </View>
 
                             <Image
                                 style={styles.songImage}
-                                source={{ uri: post.songImage }}
+                                source={{ uri: post.song.imageUri }}
                             />
                         </View>
                     </View>

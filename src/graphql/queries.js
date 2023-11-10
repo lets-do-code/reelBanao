@@ -7,6 +7,7 @@ export const getUser = /* GraphQL */ `
       id
       username
       email
+      imageUri
       posts {
         nextToken
         __typename
@@ -28,6 +29,7 @@ export const listUsers = /* GraphQL */ `
         id
         username
         email
+        imageUri
         createdAt
         updatedAt
         __typename
@@ -49,6 +51,7 @@ export const getPost = /* GraphQL */ `
         id
         username
         email
+        imageUri
         createdAt
         updatedAt
         __typename
@@ -82,8 +85,17 @@ export const listPosts = /* GraphQL */ `
         videoUri
         description
         title
+
         userID
+        user{
+          username
+          imageUri
+        }
         songID
+        song{
+          name
+          imageUri
+        }
         createdAt
         updatedAt
         userPostsId

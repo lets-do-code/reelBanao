@@ -6,6 +6,7 @@ type User @model {
   id: ID!
   username: String!
   email:String!
+  imageUri:String
   posts: [Post] @hasMany
 }
 
