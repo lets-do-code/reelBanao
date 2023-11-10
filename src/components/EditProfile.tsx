@@ -11,7 +11,7 @@ const EditProfile = () => {
     const { auth, setAuth, userImage, setUserImage, userName, setUserName } = useContext(AuthContext);
 
     const [name, setName] = useState('');
-    const [userName, setUserName] = useState('');
+    const [username, setUserame] = useState('');
     const [bio, setBio] = useState('');
     const [instagram, setInstagram] = useState('');
     const [youtube, setYoutube] = useState('');
@@ -74,7 +74,7 @@ const EditProfile = () => {
                 </View>
 
                 <View style={styles.inputContainer}>
-                    <Text style={styles.inputLabel}>{userName}</Text>
+                    <Text style={styles.inputLabel}>Username</Text>
                     <TextInput
                         placeholder='Username'
                         style={styles.input}
