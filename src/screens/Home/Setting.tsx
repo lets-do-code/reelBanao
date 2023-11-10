@@ -1,7 +1,34 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
 import AntDesign from 'react-native-vector-icons/AntDesign'
+
+
+import {
+    Auth
+} from '@aws-amplify/auth';
+import { ScrollView } from 'react-native-gesture-handler';
+
+const SignOutButton = () => {
+    const handleSignOut = async () => {
+        try {
+            await Auth.signOut();
+            // You can also navigate to the sign-in screen or do any other action here
+            console.warn('Successfully signed out');
+        } catch (error) {
+            console.error('Error signing out', error);
+        }
+    };
+
+    return (
+        <Pressable onPress={handleSignOut} style={styles.account}>
+            <Text style={styles.item}>
+                Sign Out
+            </Text>
+        </Pressable>
+    );
+};
+
 
 const Setting = () => {
 
@@ -10,13 +37,11 @@ const Setting = () => {
     const handleGoBack = () => {
         navigation.goBack();
     };
-
     const accountItems = [
         'Manage my account',
         'Privacy and safety',
         'Content preferences',
         'Balance',
-        'Share profile',
         'TikCode'
     ];
     const generalItems = [
@@ -28,11 +53,11 @@ const Setting = () => {
     ];
     const supportItems = [
         'Report a problem',
-        'Help Center'
+        'Help Center',
     ];
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <View style={styles.topContainer}>
                 <View >
                     <AntDesign name="left" size={20} color="#000" onPress={handleGoBack} />
@@ -70,9 +95,13 @@ const Setting = () => {
                         <Text style={styles.item}>{item}</Text>
                     </View>
                 ))}
-            </View>
 
-        </View>
+
+                {/* Sign out Functionality here */}
+
+                <SignOutButton />
+            </View>
+        </ScrollView>
     )
 }
 

@@ -6,13 +6,14 @@
  */
 
 import "react-native-gesture-handler"
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
 import { withAuthenticator } from "aws-amplify-react-native"
 import RootNavigation from "./src/navigation";
 import { Auth, API, graphqlOperation } from "aws-amplify";
 import { createUser } from "./src/graphql/mutations"
 import { getUser } from "./src/graphql/queries";
+import AuthContext from "./src/Context/AuthProvider";
 
 
 const randomImages = [
@@ -29,6 +30,7 @@ const getRandomImage = () => {
 
 function App(): JSX.Element {
 
+  const { auth, setAuth, userImage, setUserImage, userName, setUserName } = useContext(AuthContext);
 
   useEffect(() => {
 
@@ -36,7 +38,6 @@ function App(): JSX.Element {
       //get currently authenticated user
 
       const userInfo = await Auth.currentAuthenticatedUser({ bypassCache: true });
-      console.log(userInfo)
 
       if (!userInfo) {
         return;
@@ -55,7 +56,11 @@ function App(): JSX.Element {
 
 
       if (getUserResponse.data.getUser) {
+
         console.log("user already exists")
+        setUserName(getUserResponse.data.getUser.username)
+        setUserImage(getUserResponse.data.getUser.imageUri)
+
         return;
       }
 
@@ -76,7 +81,8 @@ function App(): JSX.Element {
           }
         )
       )
-      console.log("New User", newUser)
+      // console.log("New User", newUser)
+      // setAuthData(newUser)
 
 
     }

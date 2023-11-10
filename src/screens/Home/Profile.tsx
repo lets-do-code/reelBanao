@@ -1,15 +1,19 @@
 import { StyleSheet, Text, Image, View, TouchableOpacity, Button } from 'react-native'
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import Feather from "react-native-vector-icons/Feather"
 import PostGrid from '../../components/ProfilePostGrid'
 import Ionicons from "react-native-vector-icons/Ionicons"
 import Octicons from "react-native-vector-icons/Octicons"
 import Entypo from "react-native-vector-icons/Entypo"
+import AuthContext from '../../Context/AuthProvider';
 
 const Profile = () => {
 
+
     const navigation = useNavigation()
+
+    const { auth, setAuth, userImage, setUserImage, userName, setUserName } = useContext(AuthContext);
 
     const handleEditPress = () => {
         navigation.navigate('EditProfile')
@@ -25,7 +29,7 @@ const Profile = () => {
                     <Octicons name="person-add" size={24} color="#000" />
                 </View>
                 <View>
-                    <Text style={styles.route}>@singhabhijeet07</Text>
+                    <Text style={styles.route}>@{userName}</Text>
 
                 </View>
                 <View >
@@ -35,11 +39,11 @@ const Profile = () => {
             <View style={styles.pictureContainer}>
                 <Image
                     style={styles.picture}
-                    source={{ uri: 'https://preview.redd.it/p-image-classification-for-product-images-v0-iar6d744jtwb1.png?width=226&format=png&auto=webp&s=a4cb1354f1922442b7f8b8ea0fbbc3bde1351c9f' }}
+                    source={{ uri: userImage }}
                 />
             </View>
             <View>
-                <Text style={styles.username}>@singhabhijeet07</Text>
+                <Text style={styles.username}>@{userName}</Text>
 
             </View>
 
@@ -157,7 +161,7 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
     buttonContainer: {
-        backgroundColor: "#ff6347",
+        backgroundColor: "#ff9900",
         justifyContent: 'center',
         alignItems: 'center',
         padding: 10,

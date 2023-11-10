@@ -1,14 +1,15 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import ImagePicker from 'react-native-image-picker';
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import AuthContext from '../Context/AuthProvider';
 
 const EditProfile = () => {
 
     const navigation = useNavigation();
+    const { auth, setAuth, userImage, setUserImage, userName, setUserName } = useContext(AuthContext);
 
-    const [profilePicture, setProfilePicture] = useState('https://preview.redd.it/p-image-classification-for-product-images-v0-iar6d744jtwb1.png?width=226&format=png&auto=webp&s=a4cb1354f1922442b7f8b8ea0fbbc3bde1351c9f');
     const [name, setName] = useState('');
     const [userName, setUserName] = useState('');
     const [bio, setBio] = useState('');
@@ -57,7 +58,7 @@ const EditProfile = () => {
 
             <View style={styles.pictureContainer}>
                 {/* <TouchableOpacity onPress={handleSelectImage}> */}
-                <Image style={styles.picture} source={{ uri: profilePicture }} />
+                <Image style={styles.picture} source={{ uri: userImage }} />
                 {/* </TouchableOpacity> */}
             </View>
 
@@ -73,7 +74,7 @@ const EditProfile = () => {
                 </View>
 
                 <View style={styles.inputContainer}>
-                    <Text style={styles.inputLabel}>Username</Text>
+                    <Text style={styles.inputLabel}>{userName}</Text>
                     <TextInput
                         placeholder='Username'
                         style={styles.input}
