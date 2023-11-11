@@ -16,5 +16,11 @@ export type AmplifyDependentResourcesAttributes = {
       "UserPoolId": "string",
       "UserPoolName": "string"
     }
+  },
+  "storage": {
+    "reelBanaoContent56": {
+      "BucketName": "string",
+      "Region": "string"
+    }
   }
 }

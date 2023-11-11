@@ -45,7 +45,6 @@ export const getPost = /* GraphQL */ `
       id
       videoUri
       description
-      title
       userID
       user {
         id
@@ -84,8 +83,6 @@ export const listPosts = /* GraphQL */ `
         id
         videoUri
         description
-        title
-
         userID
         user{
           username

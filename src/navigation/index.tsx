@@ -9,6 +9,7 @@ import EditProfile from '../components/EditProfile';
 import Profile from '../screens/Home/Profile';
 import Setting from '../screens/Home/Setting';
 import DirectMessage from '../screens/Home/DirectMessage';
+import CreatePost from '../screens/CreatePost/Index'
 
 
 const RootNavigation = () => {
@@ -24,6 +25,7 @@ const RootNavigation = () => {
                 <Stack.Screen name="Profile" component={Profile} />
                 <Stack.Screen name="Setting" component={Setting} />
                 <Stack.Screen name="Directmessage" component={DirectMessage} />
+                <Stack.Screen name="CreatePost" component={CreatePost} />
 
             </Stack.Navigator>
         </NavigationContainer >

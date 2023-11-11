@@ -28,7 +28,7 @@ const DirectMessage = () => {
             <View style={styles.messageContainer}>
                 <Image source={MessageImage} style={{ height: 50, resizeMode: 'contain' }} />
                 <Text style={styles.mainText}>Message your friends</Text>
-                <Text>Share videos or start a conversation</Text>
+                <Text style={styles.subMsgText}>Share videos or start a conversation</Text>
             </View>
         </View>
     )
@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
     },
 
     route: {
+        fontSize: 16,
         color: "#000",
         fontWeight: "600"
     },
@@ -66,7 +67,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     mainText: {
+        fontSize: 16,
         color: "#000",
         fontWeight: "600"
+    },
+    subMsgText: {
+        fontWeight: '400'
     }
 })

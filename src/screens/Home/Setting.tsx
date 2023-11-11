@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
     },
 
     route: {
+        fontSize: 16,
         color: "#000",
         fontWeight: "600"
     },
@@ -133,16 +134,16 @@ const styles = StyleSheet.create({
 
     },
     heading: {
-        fontSize: 14,
+        fontSize: 16,
         fontWeight: "500"
 
     },
     account: {
 
-        padding: 10,
+        padding: 9,
     },
     item: {
-        fontSize: 14,
+        fontSize: 16,
         color: "#000",
         fontWeight: '400'
     },

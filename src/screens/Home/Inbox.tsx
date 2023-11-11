@@ -32,7 +32,7 @@ const Inbox = () => {
             <View style={styles.messageContainer}>
                 <Image source={Notification} style={{ height: 50, resizeMode: 'contain' }} />
                 <Text style={styles.mainText}>Notifications aren’t available</Text>
-                <Text>Notifications about your account will appear here</Text>
+                <Text style={styles.InboxSubText}>Notifications about your account will appear here</Text>
             </View>
         </View>
     )
@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     },
 
     route: {
+        fontSize: 16,
         color: "#000",
         fontWeight: "600"
     },
@@ -69,7 +70,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     mainText: {
+        fontSize: 16,
         color: "#000",
         fontWeight: "600"
+    },
+    InboxSubText: {
+        fontWeight: '400'
     }
 })

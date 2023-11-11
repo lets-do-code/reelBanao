@@ -14,7 +14,6 @@ type Post @model {
   id: ID!
   videoUri: String!
   description: String!
-  title: String!
   userID: ID!
   user: User @belongsTo(fields: ["userID"])
   songID: ID!

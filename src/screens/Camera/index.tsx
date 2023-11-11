@@ -1,9 +1,14 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React, { useState, useRef } from 'react';
 import { RNCamera } from 'react-native-camera';
+import { useNavigation } from '@react-navigation/native';
 
 const Index = () => {
     const [isRecording, setIsRecording] = useState(false);
+
+
+
+    const navigation = useNavigation()
     const camera = useRef(null); // Initialize the ref with null
 
     const onRecord = async () => {
@@ -14,7 +19,8 @@ const Index = () => {
         } else {
             try {
                 const data = await camera.current.recordAsync();
-                console.log(data);
+                navigation.navigate('CreatePost', { videoUri: data.uri })
+                // console.log(data);
             } catch (error) {
                 console.error("Error recording:", error);
             }

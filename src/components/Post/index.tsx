@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Image, Text, Touchable, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -7,20 +7,23 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Fontisto from 'react-native-vector-icons/Fontisto';
+import { Storage } from 'aws-amplify';
 
 
 const Index = (props: any) => {
 
     const navigation = useNavigation()
     const [post, setPost] = useState(props.post);
+    const [videoUri, setVideoUri] = useState('')
     const [isLiked, setIsLiked] = useState(false);
     const [paused, setPaused] = useState(false);
     const [screen, setScreen] = useState(false);
 
+
+
     const handleProfilePress = () => {
         navigation.navigate('Profile')
     }
-
 
     const handleFollowingPress = () => {
         setScreen(false)
@@ -46,13 +49,23 @@ const Index = (props: any) => {
     }
 
 
+    const getVideoUri = async () => {
+        if (post.videoUri.startsWith('http')) {
+            setVideoUri(post.videoUri);
+        }
 
+        setVideoUri(await Storage.get(post.videoUri))
+    }
+
+    useEffect(() => {
+        getVideoUri()
+    }, [])
     return (
         <View style={styles.container}>
             <TouchableWithoutFeedback onPress={onPlayPausePress}>
                 <View>
                     <Video
-                        source={{ uri: post.videoUri }}
+                        source={{ uri: videoUri }}
                         style={styles.video}
                         onError={(e) => console.log(e)}
                         resizeMode={'cover'}

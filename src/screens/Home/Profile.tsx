@@ -1,4 +1,4 @@
-import { StyleSheet, Text, Image, View, TouchableOpacity, Button } from 'react-native'
+import { StyleSheet, Text, Image, View, TouchableOpacity, Button, TextInput } from 'react-native'
 import React, { useContext } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import Feather from "react-native-vector-icons/Feather"
@@ -13,13 +13,16 @@ const Profile = () => {
 
     const navigation = useNavigation()
 
-    const { auth, setAuth, userImage, setUserImage, userName, setUserName } = useContext(AuthContext);
+    const { userImage, setUserImage, userName, setUserName } = useContext(AuthContext);
 
     const handleEditPress = () => {
         navigation.navigate('EditProfile')
     };
     const handleSettingPress = () => {
         navigation.navigate('Setting')
+    }
+    const handleAddBio = () => {
+        navigation.navigate('EditProfile')
     }
 
     return (
@@ -71,7 +74,10 @@ const Profile = () => {
             </View>
 
             <View style={styles.bioContainer}>
-                <Text>Tap to add bio</Text>
+                <TouchableOpacity onPress={handleAddBio}>
+                    <Text style={styles.bioText}>Tap to add bio</Text>
+
+                </TouchableOpacity>
             </View>
             <View style={styles.gridContainer}>
                 <View style={styles.gridContainerIcon}>
@@ -111,6 +117,7 @@ const styles = StyleSheet.create({
     },
 
     route: {
+        fontSize: 16,
         color: "#000",
         fontWeight: "600"
     },
@@ -128,7 +135,7 @@ const styles = StyleSheet.create({
     username: {
         fontSize: 16,
         color: "#000",
-        fontWeight: '400',
+        fontWeight: '600',
     },
 
     userReach: {
@@ -150,7 +157,7 @@ const styles = StyleSheet.create({
     },
     reachtext2: {
         fontSize: 13,
-        fontWeight: '300',
+        fontWeight: '400',
     },
     editButton: {
         flex: 1,
@@ -192,6 +199,9 @@ const styles = StyleSheet.create({
 
     bioContainer: {
         padding: 10
+    },
+    bioText: {
+        fontWeight: '400'
     },
     gridContainer: {
         flex: 1,

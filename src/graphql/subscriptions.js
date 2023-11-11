@@ -58,7 +58,6 @@ export const onCreatePost = /* GraphQL */ `
       id
       videoUri
       description
-      title
       userID
       user {
         id
@@ -92,7 +91,6 @@ export const onUpdatePost = /* GraphQL */ `
       id
       videoUri
       description
-      title
       userID
       user {
         id
@@ -126,7 +124,6 @@ export const onDeletePost = /* GraphQL */ `
       id
       videoUri
       description
-      title
       userID
       user {
         id

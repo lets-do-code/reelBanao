@@ -8,7 +8,7 @@ import AuthContext from '../Context/AuthProvider';
 const EditProfile = () => {
 
     const navigation = useNavigation();
-    const { auth, setAuth, userImage, setUserImage, userName, setUserName } = useContext(AuthContext);
+    const { userImage, setUserImage, userName, setUserName } = useContext(AuthContext);
 
     const [name, setName] = useState('');
     const [username, setUserame] = useState('');
@@ -140,6 +140,7 @@ const styles = StyleSheet.create({
     },
 
     route: {
+        fontSize: 16,
         color: "#000",
         fontWeight: "600"
     },
@@ -175,9 +176,13 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         paddingLeft: 8,
         height: 40,
-        textAlign: "right"
+        textAlign: "right",
+        fontSize: 16,
+        fontWeight: '400'
     },
     inputLabel: {
+        fontSize: 16,
         color: "#000",
+        fontWeight: "400"
     }
 })

@@ -70,7 +70,6 @@ export const createPost = /* GraphQL */ `
       id
       videoUri
       description
-      title
       userID
       user {
         id
@@ -107,7 +106,6 @@ export const updatePost = /* GraphQL */ `
       id
       videoUri
       description
-      title
       userID
       user {
         id
@@ -144,7 +142,6 @@ export const deletePost = /* GraphQL */ `
       id
       videoUri
       description
-      title
       userID
       user {
         id
