@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Storage, API, graphqlOperation, Auth } from 'aws-amplify'
 import { useRoute, useNavigation } from '@react-navigation/native'
@@ -15,8 +15,10 @@ const Index = () => {
     const navigation = useNavigation()
 
     const uploadOnS3Bucket = async (imagePath) => {
+
         try {
             const response = await fetch(imagePath)
+
 
 
             const blob = await response.blob()
@@ -25,10 +27,11 @@ const Index = () => {
             const fileName = `${uuidv4()}.mp4`
             // const fileName = 'filename.mp4'
 
+
             const s3Response = await Storage.put(fileName, blob)
+
             setVideoKey(s3Response.key)
 
-            // console.log(s3Response)
         }
         catch (error) {
             console.log("Error", error)
@@ -43,12 +46,7 @@ const Index = () => {
 
     const onPublish = async () => {
 
-        console.log("enter in Publish mode")
-
-        // create post in the data base {API}
-
         if (!VideoKey) {
-            console.warn("Video is not uploaded yet")
             return;
         }
 
@@ -64,14 +62,12 @@ const Index = () => {
 
             }
 
-            console.log(newPost)
             const response = await API.graphql(
                 graphqlOperation(
                     createPost,
                     { input: newPost }
                 )
             )
-            console.log(response)
             navigation.navigate("Home", { screen: "Home" })
         }
         catch (error) {
@@ -85,7 +81,12 @@ const Index = () => {
                 <View style={styles.publish}>
                     <Text style={styles.publishText}>Publish your post </Text>
                 </View>
-
+                <View style={styles.publishImageContainer}>
+                    <Image
+                        source={{ uri: route.params.videoUri }}
+                        style={styles.publishImage}
+                    />
+                </View>
                 <Text style={styles.desHead}>Description</Text>
                 <TextInput
                     multiline={true}
@@ -126,6 +127,15 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         color: "#000"
     },
+
+    publishImageContainer: {
+
+    },
+    publishImage: {
+        width: 50,
+        height: 50
+    },
+
     desHead: {
         fontSize: 14,
         fontWeight: '400',
